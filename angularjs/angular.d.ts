@@ -637,72 +637,7 @@ declare module ng {
      * HttpService 
      * see http://docs.angularjs.org/api/ng/service/$http
      */
-    interface IHttpService {
-        /**
-         * Object describing the request to be made and how it should be processed.
-         */
-        <T>(config: IRequestConfig): IHttpPromise<T>;
-
-        /**
-         * Shortcut method to perform GET request.
-         * 
-         * @param url Relative or absolute URL specifying the destination of the request
-         * @param config Optional configuration object
-         */
-        get<T>(url: string, config?: IRequestShortcutConfig): IHttpPromise<T>;
-
-        /**
-         * Shortcut method to perform DELETE request.
-         * 
-         * @param url Relative or absolute URL specifying the destination of the request
-         * @param config Optional configuration object
-         */
-        delete<T>(url: string, config?: IRequestShortcutConfig): IHttpPromise<T>;
-
-        /**
-         * Shortcut method to perform HEAD request.
-         * 
-         * @param url Relative or absolute URL specifying the destination of the request
-         * @param config Optional configuration object
-         */
-        head<T>(url: string, config?: IRequestShortcutConfig): IHttpPromise<T>;
-
-        /**
-         * Shortcut method to perform JSONP request.
-         * 
-         * @param url Relative or absolute URL specifying the destination of the request
-         * @param config Optional configuration object
-         */
-        jsonp<T>(url: string, config?: IRequestShortcutConfig): IHttpPromise<T>;
-
-        /**
-         * Shortcut method to perform POST request.
-         * 
-         * @param url Relative or absolute URL specifying the destination of the request
-         * @param data Request content
-         * @param config Optional configuration object
-         */
-        post<T>(url: string, data: any, config?: IRequestShortcutConfig): IHttpPromise<T>;
-
-        /**
-         * Shortcut method to perform PUT request.
-         * 
-         * @param url Relative or absolute URL specifying the destination of the request
-         * @param data Request content
-         * @param config Optional configuration object
-         */
-        put<T>(url: string, data: any, config?: IRequestShortcutConfig): IHttpPromise<T>;
-
-        /**
-         * Runtime equivalent of the $httpProvider.defaults property. Allows configuration of default headers, withCredentials as well as request and response transformations.
-         */
-        defaults: IRequestConfig;
-
-        /**
-         * Array of config objects for currently pending requests. This is primarily meant to be used for debugging purposes.
-         */
-        pendingRequests: any[];
-    }
+    
 
     /**
      * Object describing the request to be made and how it should be processed.
@@ -801,8 +736,6 @@ declare module ng {
     interface IHttpPromise<T> extends IPromise<T> {
         success(callback: IHttpPromiseCallback<T>): IHttpPromise<T>;
         error(callback: IHttpPromiseCallback<T>): IHttpPromise<T>;
-        then<TResult>(successCallback: (response: IHttpPromiseCallbackArg<T>) => TResult, errorCallback?: (response: IHttpPromiseCallbackArg<T>) => any): IPromise<TResult>;
-        then<TResult>(successCallback: (response: IHttpPromiseCallbackArg<T>) => IPromise<TResult>, errorCallback?: (response: IHttpPromiseCallbackArg<T>) => any): IPromise<TResult>;
     }
 
     interface IHttpProvider extends IServiceProvider {
